@@ -1,0 +1,78 @@
+program QuickSort;
+
+{$APPTYPE CONSOLE}
+
+uses
+  SysUtils;
+
+const
+
+  M=1000000;
+
+type
+
+  mas = array [1..M] of integer;
+
+var
+  A: mas;
+  n, l: Integer;
+  f: TextFile;
+  T: TDateTime;
+  name1,name2: string[20];
+  THour, TMin, TSec, TMilli: word;
+  TSum: double;
+
+procedure sort(L, R: integer);
+var
+  i, j: integer;
+  w, x: integer;
+begin
+  i := L;
+  j := R;
+  x := a[(L + R) div 2];
+  repeat
+    while a[i] < x do
+      i := i + 1;
+    while x < a[j] do
+      j := j - 1;
+    if i <= j then
+      begin
+        w := a[i];
+        a[i] := a[j];
+        a[j] := w;
+        i := i + 1;
+        j := j - 1;
+      end;
+  until i > j;
+  if L < j then
+    sort(L, j);
+  if i < R then
+    sort(i, R);
+end;
+
+begin
+  Writeln('Vvedite imya faila s ishodnym massivom');
+  Readln(name1);
+  Writeln('Vvedite imya vihodnogo faila');
+  Readln(name2);
+  AssignFile(f, name1);
+  Reset(f);
+  Readln(f, n);
+  for i:= 1 to n do
+    read(f, a[i]);
+  Close(f);
+  T:= Now;
+  sort(1, N);
+  T:= Now-T;
+  DecodeTime(T, THour, TMin, TSec, TMilli);
+  TSum:= TMilli/1000 + TSec + 60*TMin + 3600*THour;
+  AssignFile(f, name2);
+  rewrite(f);
+  writeln(f, n);
+  for i:= 1 to n-1 do
+    write(f, a[i], ' ');
+  writeln(f, a[n]);
+  Writeln(f, 'QuickSort');
+  Writeln(f, floattostr(TSum));
+  CloseFile(f);
+end.
