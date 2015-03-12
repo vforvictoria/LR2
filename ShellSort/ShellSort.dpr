@@ -13,8 +13,8 @@ var
   name1,name2: string[20];
   THour, TMin, TSec, TMilli: word;
   TSum: double;
-  l: word;
-  h: array of LongWord;
+  l: integer;
+  h: array of integer;
 
 begin
   name1:=paramstr(1);
@@ -29,7 +29,7 @@ begin
   T:= Now;
   l := 1;
   SetLength(h, l + 1);
-  h[1] := 1;
+  h[0] := 1;
   while h[l] < N div 2 do
   begin
     l := l + 1;
@@ -38,10 +38,10 @@ begin
   end;
   l := l - 1;
   SetLength(h, l + 1);
-  for b := l downto 1 do
+  for b := l downto 0 do
   begin
     k := h[b];
-    for i := k to N-1 do
+    for i := k to N do
     begin
       x := a[i];
       j := i - k;

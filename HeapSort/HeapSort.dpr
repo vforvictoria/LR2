@@ -46,17 +46,17 @@ begin
     read(f, a[i]);
   Close(f);
   T:= Now;
-  L := (N div 2) + 1;
+  L := (N div 2)+1;
   R := N;
-  while L > 1 do
+  while L > 0 do
   begin
     L := L - 1;
     sift(L, R);
   end;
-  while R > 1 do
+  while R > 0 do
   begin
-    x := a[1];
-    a[1] := a[R];
+    x := a[0];
+    a[0] := a[R];
     a[R] := x;
     R := R - 1;
     sift(L, R);
