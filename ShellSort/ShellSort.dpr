@@ -27,7 +27,7 @@ begin
     read(f, A[i]);
   Close(f);
   T:= Now;
-  l := 1;
+  l := 0;
   SetLength(h, l + 1);
   h[0] := 1;
   while h[l] < N div 2 do
@@ -36,12 +36,11 @@ begin
     SetLength(h, l + 1);
     h[l] := h[l - 1] * 2 + 1;
   end;
-  l := l - 1;
   SetLength(h, l + 1);
-  for b := l downto 0 do
+  for b := l downto -1 do
   begin
     k := h[b];
-    for i := k to N do
+    for i := k to N-1 do
     begin
       x := a[i];
       j := i - k;

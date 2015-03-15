@@ -14,8 +14,7 @@ name: string[20];
 begin
   Writeln('Vvedite razmer massiva');
   Readln(N);
-  Writeln('Vvedite imya faila v korotyj zapisat massiv');
-  Readln(name);
+  name:=paramstr(1);
   setlength(a,n);
   randomize;
   for i:= 0 to n-1 do
