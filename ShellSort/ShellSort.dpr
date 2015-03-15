@@ -37,19 +37,19 @@ begin
     h[l] := h[l - 1] * 2 + 1;
   end;
   SetLength(h, l + 1);
-  for b := l downto -1 do
+  for b := l downto 0 do
   begin
     k := h[b];
     for i := k to N-1 do
     begin
       x := a[i];
       j := i - k;
-      while (j > k) and (x < a[j]) do
+      while (j > k-1) and (x < a[j]) do
       begin
         a[j + k] := a[j];
         j := j - k;
       end;
-      if (j > k) or (x >= a[j]) then
+      if (j > k-1) or (x >= a[j]) then
         a[j + k] := x
       else
       begin
